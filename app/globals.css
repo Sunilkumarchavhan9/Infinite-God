@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f3f3f4;
+  --foreground: #111111;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+}
+
+::selection {
+  background: #111111;
+  color: #ffffff;
+}
+
+.hero-band {
+  background: #f3f3f4;
+}
+
+.hero-dots {
+  background-image: radial-gradient(rgba(17, 17, 17, 0.16) 0.85px, transparent 0.85px);
+  background-size: 7px 7px;
+}
+
+.hero-cloud {
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 58% 22%,
+      rgba(37, 99, 235, 0.22) 0%,
+      rgba(37, 99, 235, 0.1) 22%,
+      transparent 52%
+    ),
+    radial-gradient(
+      circle at 48% 20%,
+      rgba(37, 99, 235, 0.45) 0 1.2px,
+      transparent 1.3px
+    );
+  background-size: auto, 8px 8px;
+  background-repeat: no-repeat;
+}
+
+.hero-cloud::before {
+  content: "";
+  position: absolute;
+  left: 44%;
+  top: 8%;
+  width: 28%;
+  min-width: 220px;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  border: 1px solid rgba(37, 99, 235, 0.42);
+  box-shadow:
+    0 0 0 18px rgba(37, 99, 235, 0.08),
+    0 0 0 52px rgba(37, 99, 235, 0.04);
+  filter: blur(0.2px);
+}
+
+.hero-cloud::after {
+  content: "";
+  position: absolute;
+  left: 34%;
+  top: 19%;
+  width: 38%;
+  min-width: 280px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(37, 99, 235, 0),
+    rgba(37, 99, 235, 0.72) 45%,
+    rgba(37, 99, 235, 0)
+  );
+  transform: rotate(-5deg);
+}
+
+@media (max-width: 900px) {
+  .hero-cloud::before {
+    left: 33%;
+    top: 8%;
+    width: 40%;
+    min-width: 180px;
+  }
+
+  .hero-cloud::after {
+    left: 24%;
+    top: 21%;
+    width: 52%;
+    min-width: 210px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-dots {
+    background-size: 6px 6px;
+  }
+
+  .hero-cloud::before {
+    left: 22%;
+    top: 9%;
+    width: 56%;
+    min-width: 0;
+    box-shadow:
+      0 0 0 12px rgba(37, 99, 235, 0.08),
+      0 0 0 32px rgba(37, 99, 235, 0.04);
+  }
+
+  .hero-cloud::after {
+    left: 13%;
+    top: 22%;
+    width: 74%;
+    min-width: 0;
+    transform: rotate(-6deg);
+  }
+}
+
+.dither-surface {
+  background-color: #f8fbff;
+  background-image:
+    radial-gradient(ellipse at 30% 40%, rgba(37, 99, 235, 0.9) 0 26%, transparent 27%),
+    radial-gradient(ellipse at 70% 55%, rgba(37, 99, 235, 0.88) 0 22%, transparent 23%),
+    radial-gradient(rgba(37, 99, 235, 0.95) 1px, transparent 1.2px);
+  background-size: auto, auto, 6px 6px;
+}
+
+.dither-surface.dither-a {
+  background-position: 18% 42%, 72% 56%, 0 0;
+}
+
+.dither-surface.dither-b {
+  background-position: 64% 38%, 34% 65%, 0 0;
+}
